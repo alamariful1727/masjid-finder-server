@@ -3,10 +3,10 @@ import { Document, Schema, Model, model } from 'mongoose';
 interface IEventBase {
   name: string;
   contactNo: string;
+  address: string;
   location: {
     type: 'Point';
     coordinates: [number, number];
-    address: string;
   };
   createdAt: Date;
   updatedAt: Date;
@@ -26,6 +26,13 @@ const eventSchema: Schema = new Schema(
       trim: true,
       required: true,
     },
+    address: {
+      type: String,
+      trim: true,
+      minlength: 2,
+      maxlength: 500,
+      required: true,
+    },
     location: {
       type: {
         type: String,
@@ -35,11 +42,6 @@ const eventSchema: Schema = new Schema(
       coordinates: {
         type: [Number],
         index: '2dsphere',
-        required: true,
-      },
-      address: {
-        type: String,
-        trim: true,
         required: true,
       },
     },
