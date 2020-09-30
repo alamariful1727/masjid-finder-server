@@ -26,8 +26,9 @@ export const createEvent = async (req: Request, res: Response, next: NextFunctio
 
 export const getAllEvent = async (req: Request, res: Response, next: NextFunction) => {
   try {
+    const events = await EventModel.find({});
     return res.status(HttpStatus.OK).json({
-      message: 'events',
+      events,
     });
   } catch (error) {
     next(error);
