@@ -6,7 +6,7 @@ interface IEventBase {
   address: string;
   location: {
     type: 'Point';
-    coordinates: [number, number];
+    coordinates: number[];
   };
   createdAt: Date;
   updatedAt: Date;
@@ -18,7 +18,7 @@ const eventSchema: Schema = new Schema(
       type: String,
       trim: true,
       minlength: 2,
-      maxlength: 32,
+      maxlength: 150,
       required: true,
     },
     contactNo: {
@@ -59,5 +59,8 @@ export interface IEvent extends IEventSchema {
   _doc: IEventSchema;
   // ? add those methods here
 }
+
+//? Make sure you create index for location in 2dsphere
+eventSchema.index({ location: '2dsphere' });
 
 export const EventModel: Model<IEvent> = model<IEvent>('Event', eventSchema);
