@@ -1,19 +1,23 @@
 import { Request, Response, NextFunction } from 'express';
 import * as HttpStatus from 'http-status-codes';
 import { ICreateEventRequest } from './event.dto';
+import { EventModel, IEvent } from './event.model';
 
 export const createEvent = async (req: Request, res: Response, next: NextFunction) => {
   try {
-    let data: ICreateEventRequest = req.body;
-    // let newAccount = new AccountModel({
-    //   name: data.name,
-    //   email: data.email,
-    //   password: data.password,
-    //   contactNo: data.contactNo,
-    // });
-    // let account = await newAccount.save();
+    let { name, contactNo, address, longitude, latitude }: ICreateEventRequest = req.body;
+
+    let location: IEvent['location'] = {
+      type: 'Point',
+      coordinates: [longitude, latitude],
+    };
+
+    const newEvent = new EventModel({ name, contactNo, address, location });
+
+    const event = await newEvent.save();
+
     return res.status(HttpStatus.CREATED).json({
-      data,
+      event,
     });
   } catch (error) {
     next(error);
