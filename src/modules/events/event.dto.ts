@@ -4,5 +4,6 @@ export interface ICreateEventRequest {
   name: IEvent['name'];
   contactNo: IEvent['contactNo'];
   address: IEvent['address'];
-  location: IEvent['location'];
+  latitude: number;
+  longitude: number;
 }
