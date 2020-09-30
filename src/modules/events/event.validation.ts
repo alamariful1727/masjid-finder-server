@@ -27,6 +27,7 @@ const schema = {
   address: Joi.string().trim().min(2).max(500),
   latitude: Joi.number().min(-90).max(90),
   longitude: Joi.number().min(-180).max(180),
+  maxDistance: Joi.number().min(1000).max(100000),
 };
 
 export const createEventValidation = Joi.object().keys({
@@ -34,6 +35,14 @@ export const createEventValidation = Joi.object().keys({
     name: schema.name.required(),
     contactNo: schema.contactNo.required(),
     address: schema.address.required(),
+    latitude: schema.latitude.required(),
+    longitude: schema.longitude.required(),
+  }),
+});
+
+export const getAllNearByEventsValidation = Joi.object().keys({
+  query: Joi.object().keys({
+    maxDistance: schema.maxDistance.required(),
     latitude: schema.latitude.required(),
     longitude: schema.longitude.required(),
   }),

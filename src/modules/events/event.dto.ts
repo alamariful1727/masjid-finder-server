@@ -7,3 +7,9 @@ export interface ICreateEventRequest {
   latitude: number;
   longitude: number;
 }
+
+export interface IGetAllNearByEventsRequest {
+  maxDistance: number;
+  latitude: number;
+  longitude: number;
+}
