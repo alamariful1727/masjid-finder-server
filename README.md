@@ -4,22 +4,7 @@ It's an REST-API Server for storing Geographic Document in MongoDB.
 
 ## Prerequisites
 
-You should install `Node`, `git`
-
-## Installing
-
-- `git clone https://github.com/alamariful1727/event-locator.git`
-- `cd event-locator`
-- `npm install`
-
-## For development
-
-- `npm run dev`
-
-## For production
-
-- `npm run build`
-- `npm start`
+You should install `Node` & `MongoDB`
 
 ### **Geographic Document**
 
@@ -84,6 +69,21 @@ const events = await EventModel.find({
   },
 });
 ```
+
+## Installing
+
+- `git clone https://github.com/alamariful1727/event-locator.git`
+- `cd event-locator`
+- `npm install`
+
+## For development
+
+- `npm run dev`
+
+## For production
+
+- `npm run build`
+- `npm start`
 
 ## Authors
 
