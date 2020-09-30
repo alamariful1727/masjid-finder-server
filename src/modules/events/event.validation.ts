@@ -24,14 +24,16 @@ export const getOneJoiObjectSchema = (
 const schema = {
   name: Joi.string().trim().min(2).max(32),
   contactNo: Joi.string().trim().regex(contactNoRegex),
-  latitude: Joi.number().min(1),
-  longitude: Joi.number().min(1),
+  address: Joi.string().trim().min(2).max(500),
+  latitude: Joi.number().min(-90).max(90),
+  longitude: Joi.number().min(-180).max(180),
 };
 
 export const createEventValidation = Joi.object().keys({
   body: Joi.object().keys({
     name: schema.name.required(),
     contactNo: schema.contactNo.required(),
+    address: schema.address.required(),
     latitude: schema.latitude.required(),
     longitude: schema.longitude.required(),
   }),
