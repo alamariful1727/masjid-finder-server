@@ -22,7 +22,7 @@ export const getOneJoiObjectSchema = (
 
 // joi schema
 const schema = {
-  name: Joi.string().trim().min(2).max(32),
+  name: Joi.string().trim().min(2).max(150),
   contactNo: Joi.string().trim().regex(contactNoRegex),
   address: Joi.string().trim().min(2).max(500),
   latitude: Joi.number().min(-90).max(90),
