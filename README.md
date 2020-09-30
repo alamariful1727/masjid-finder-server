@@ -6,8 +6,8 @@ You should install `Node`, `git`
 
 ### Installing
 
-- `git clone https://github.com/alamariful1727/node-geojson-mongodb.git`
-- `cd node-geojson-mongodb`
+- `git clone https://github.com/alamariful1727/event-locator.git`
+- `cd event-locator`
 - `npm install`
 
 ### For development
