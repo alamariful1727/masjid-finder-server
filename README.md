@@ -72,8 +72,8 @@ const events = await EventModel.find({
 
 ## Installing
 
-- `git clone https://github.com/alamariful1727/event-locator.git`
-- `cd event-locator`
+- `git clone https://github.com/alamariful1727/event-locator-server.git`
+- `cd event-locator-server`
 - `npm install`
 
 ## For development
