@@ -1,4 +1,4 @@
-# Event Locator - server
+# Masjid Finder - server
 
 It's an REST-API Server for storing Geographic Document in MongoDB.
 
@@ -34,7 +34,7 @@ Storing a Point in a MongoDB Document requires the field to have a name. In our 
 **2dsphere** indexes support queries that calculate geometries on an earth-like sphere.
 
 ```javascript
-eventSchema.index({ location: '2dsphere' });
+masjidSchema.index({ location: '2dsphere' });
 ```
 
 ### **Validating Schema using @hapi/joi Validation**
@@ -60,7 +60,7 @@ const schema = {
 By applying a `$near` filter on the location field, we can find all points within `1km` (1000 meters) of `[90.3685011, 23.7688734]`.
 
 ```javascript
-const events = await EventModel.find({
+const masjids = await MasjidModel.find({
   location: {
     $near: {
       $maxDistance: 1000,
@@ -72,8 +72,8 @@ const events = await EventModel.find({
 
 ## Installing
 
-- `git clone https://github.com/alamariful1727/event-locator-server.git`
-- `cd event-locator-server`
+- `git clone https://github.com/alamariful1727/masjid-finder-server.git`
+- `cd masjid-finder-server`
 - `npm install`
 
 ## For development

@@ -1,6 +1,6 @@
 import { Document, Schema, Model, model } from 'mongoose';
 
-interface IEventBase {
+interface IMasjidBase {
   name: string;
   contactNo: string;
   address: string;
@@ -12,7 +12,7 @@ interface IEventBase {
   updatedAt: Date;
 }
 
-const eventSchema: Schema = new Schema(
+const masjidSchema: Schema = new Schema(
   {
     name: {
       type: String,
@@ -51,16 +51,16 @@ const eventSchema: Schema = new Schema(
   },
 );
 
-interface IEventSchema extends IEventBase, Document {}
+interface IMasjidSchema extends IMasjidBase, Document {}
 
 // ? Write your methods here
 
-export interface IEvent extends IEventSchema {
-  _doc: IEventSchema;
+export interface IMasjid extends IMasjidSchema {
+  _doc: IMasjidSchema;
   // ? add those methods here
 }
 
 //? Make sure you create index for location in 2dsphere
-eventSchema.index({ location: '2dsphere' });
+masjidSchema.index({ location: '2dsphere' });
 
-export const EventModel: Model<IEvent> = model<IEvent>('Event', eventSchema);
+export const MasjidModel: Model<IMasjid> = model<IMasjid>('Masjid', masjidSchema);

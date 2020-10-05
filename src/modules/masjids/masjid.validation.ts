@@ -30,7 +30,7 @@ const schema = {
   maxDistance: Joi.number().min(1000).max(100000),
 };
 
-export const createEventValidation = Joi.object().keys({
+export const createMasjidValidation = Joi.object().keys({
   body: Joi.object().keys({
     name: schema.name.required(),
     contactNo: schema.contactNo.required(),
@@ -40,7 +40,7 @@ export const createEventValidation = Joi.object().keys({
   }),
 });
 
-export const getAllNearByEventsValidation = Joi.object().keys({
+export const getAllNearByMasjidsValidation = Joi.object().keys({
   query: Joi.object().keys({
     maxDistance: schema.maxDistance.required(),
     latitude: schema.latitude.required(),

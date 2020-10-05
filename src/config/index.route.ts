@@ -1,8 +1,8 @@
 import express, { Router } from 'express';
-import { eventRoutes } from '../modules/events/event.route';
+import { masjidRoutes } from '../modules/masjids/masjid.route';
 
 const router: Router = express.Router();
 
-router.use('/events', eventRoutes);
+router.use('/masjids', masjidRoutes);
 
 export const rootRoute = router;

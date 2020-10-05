@@ -44,7 +44,7 @@ class App {
   private routes(): void {
     // home route
     this._express.get('/', (req: Request, res: Response, next: NextFunction) => {
-      res.status(HttpStatus.OK).send("Event locator's server works!!");
+      res.status(HttpStatus.OK).send("Masjid finder's server works successfully!!");
     });
 
     // application routes
