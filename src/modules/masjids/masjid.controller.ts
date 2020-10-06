@@ -17,7 +17,16 @@ export const createMasjid = async (req: Request, res: Response, next: NextFuncti
     const masjid = await newMasjid.save();
 
     return res.status(HttpStatus.CREATED).json({
-      masjid,
+      masjid: {
+        _id: masjid._id,
+        name: masjid.name,
+        contactNo: masjid.contactNo,
+        address: masjid.address,
+        latitude: masjid.location.coordinates[1],
+        longitude: masjid.location.coordinates[0],
+        createdAt: masjid.createdAt,
+        updatedAt: masjid.updatedAt,
+      },
     });
   } catch (error) {
     next(error);
@@ -27,9 +36,21 @@ export const createMasjid = async (req: Request, res: Response, next: NextFuncti
 export const getAllMasjids = async (req: Request, res: Response, next: NextFunction) => {
   try {
     const masjids = await MasjidModel.find({});
+    const mappedMasjids = masjids.map(({ _id, name, contactNo, address, location, createdAt, updatedAt }) => {
+      return {
+        _id,
+        name,
+        contactNo,
+        address,
+        latitude: location.coordinates[1],
+        longitude: location.coordinates[0],
+        createdAt,
+        updatedAt,
+      };
+    });
     return res.status(HttpStatus.OK).json({
-      count: masjids.length,
-      masjids,
+      count: mappedMasjids.length,
+      masjids: mappedMasjids,
     });
   } catch (error) {
     next(error);
@@ -50,9 +71,21 @@ export const getAllNearByMasjids = async (req: Request, res: Response, next: Nex
       },
     });
 
+    const mappedMasjids = masjids.map(({ _id, name, contactNo, address, location, createdAt, updatedAt }) => {
+      return {
+        _id,
+        name,
+        contactNo,
+        address,
+        latitude: location.coordinates[1],
+        longitude: location.coordinates[0],
+        createdAt,
+        updatedAt,
+      };
+    });
     return res.status(HttpStatus.OK).json({
-      count: masjids.length,
-      masjids,
+      count: mappedMasjids.length,
+      masjids: mappedMasjids,
     });
   } catch (error) {
     next(error);
