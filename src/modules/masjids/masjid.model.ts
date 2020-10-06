@@ -24,6 +24,7 @@ const masjidSchema: Schema = new Schema(
     contactNo: {
       type: String,
       trim: true,
+      maxlength: 14,
       required: true,
     },
     address: {
